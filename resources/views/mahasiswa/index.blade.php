@@ -1,28 +1,48 @@
 
 <x-app>
     <x-slot:title>{{ $title }}</x-slot:title>
-    <form>
-<div class="container mt-5">
-<div class="col-md-6 mx-auto">
-  <div class="mb-3">
-    <label for="name" class="form-label">Nama</label>
-    <input type="email" class="form-control" id="name"name="name">
-    <label for="nim" class="form-label">Nim</label>
-    <input type="email" class="form-control" id="nim"name="nim">
-    <label for="prodi" class="form-label">Prodi</label>
-    <input type="email" class="form-control" id="prodi"name="prodi">
-    <label for="semester" class="form-label">Semester</label>
-    <input type="email" class="form-control" id="semester"name="semester">
-    <label for="kelas" class="form-label">Kelas</label>
-    <input type="email" class="form-control" id="kelas"name="kelas">
-    <label for="alamat" class="form-label">Alamat</label>
-    <input type="email" class="form-control" id="alamat"name="alamat">
+    <div class="container">
+     <div class="d-flex justify-content">
+        <a class="btn btn-success" href="{{ route('mahasiswa.create') }}" role="button">Tambah Data +</a>
+     </div>
+    </div>
     
-  </div>
- 
-  <button type="submit" class="btn btn-primary">Kirim</button>
-  <a class="btn btn-warning" href="" role ="button">Batal</a>
-</div>
-</div>
-</form>
+   <div class="container mt-5">
+    <div class="card shadow">
+      <div class="card-header bg-primary text-white text-center">
+        <h4 class="mb-0">Data Mahasiswa</h4>
+      </div>
+      <div class="card-body">
+        <div class="table responsive">
+          <table class="table table-bordered table-hover align-middle">
+            <thead class="table-dark text-center">
+              <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Nim</th>
+                <th>Prodi</th>
+                <th>Semester</th>
+                <th>Kelas</th>
+                <th>Alamat</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($mahasiswas as $mahasiswa)
+              <tr> 
+                <td class="text-center">{{ $loop->iteration }}</td>
+                <td>{{ $mahasiswa->name }}</td>
+                <td><span class="badge bg-success">{{ $mahasiswa->nim }}</span></td>
+                 <td>{{ $mahasiswa->prodi }}</td>
+                  <td>{{ $mahasiswa->semester }}</td>
+                   <td>{{ $mahasiswa->kelas }}</td>
+                    <td>{{ $mahasiswa->alamat }}</td>
+              </tr>
+                
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+   </div>
 </x-app>
