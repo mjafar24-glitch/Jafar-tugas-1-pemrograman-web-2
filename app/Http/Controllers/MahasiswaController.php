@@ -21,7 +21,7 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        return view('mahasiswa.create', ['title' => 'Aplikasi Input Data']);
+        return view('mahasiswa.create', ['title' => 'Aplikasi Input Data Mahasiswa']);
     }
 
     /**

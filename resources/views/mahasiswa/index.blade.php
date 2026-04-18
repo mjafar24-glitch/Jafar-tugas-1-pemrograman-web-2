@@ -13,7 +13,7 @@
         <h4 class="mb-0">Data Mahasiswa</h4>
       </div>
       <div class="card-body">
-        <div class="table responsive">
+        <div class="table-responsive">
           <table class="table table-bordered table-hover align-middle">
             <thead class="table-dark text-center">
               <tr>
@@ -24,6 +24,7 @@
                 <th>Semester</th>
                 <th>Kelas</th>
                 <th>Alamat</th>
+                <th>Fitur</th>
               </tr>
             </thead>
             <tbody>
@@ -36,6 +37,12 @@
                   <td>{{ $mahasiswa->semester }}</td>
                    <td>{{ $mahasiswa->kelas }}</td>
                     <td>{{ $mahasiswa->alamat }}</td>
+                   <td class="text-center">
+        <div class="d-flex justify-content-center gap-2">
+            <a href="#" class="btn btn-sm btn-warning">Edit</a>
+            <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+        </div>
+    </td>
               </tr>
                 
               @endforeach
