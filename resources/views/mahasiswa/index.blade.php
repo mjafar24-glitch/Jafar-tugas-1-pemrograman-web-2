@@ -1,6 +1,12 @@
 
 <x-app>
     <x-slot:title>{{ $title }}</x-slot:title>
+  @session('success')
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+  @endsession
+
     <div class="container">
      <div class="d-flex justify-content">
         <a class="btn btn-success" href="{{ route('mahasiswa.create') }}" role="button">Tambah Data +</a>
