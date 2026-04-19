@@ -45,7 +45,7 @@
                     <td>{{ $mahasiswa->alamat }}</td>
                    <td class="text-center">
         <div class="d-flex justify-content-center gap-2">
-            <a href="#" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{{ route('mahasiswa.edit', $mahasiswa) }}" class="btn btn-sm btn-warning">Edit</a>
             <a href="#" class="btn btn-sm btn-danger">Hapus</a>
         </div>
     </td>

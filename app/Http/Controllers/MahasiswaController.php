@@ -13,8 +13,9 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-          return view('mahasiswa.index', ['title' => 'Aplikasi Input Data Mahasiswa',
-          'mahasiswas' => Mahasiswa::all()]);
+          return view('mahasiswa.index', [
+            'title' => 'Aplikasi Input Data Mahasiswa',
+            'mahasiswas' => Mahasiswa::latest()->get()]);
     }
 
     /**
@@ -70,7 +71,9 @@ class MahasiswaController extends Controller
      */
     public function edit(Mahasiswa $mahasiswa)
     {
-        //
+         return view('mahasiswa.edit',
+          ['title' => 'Edit Data Mahasiswa',
+          'mahasiswa' => $mahasiswa]);
     }
 
     /**
@@ -78,7 +81,32 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, Mahasiswa $mahasiswa)
     {
-        //
+           $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'nim' => 'required|digits:10|numeric',
+            'prodi' => 'required|string|max:50',
+            'semester' => 'required|integer|min:1|max:14',
+            'kelas' => 'required|string|max:10',
+            'alamat' => 'required|string|max:255',
+        ],[
+            'name.required' => 'Nama Wajib diisi',
+            'name.max' =>'Nama Maksimal:max karakter',
+            'nim.required' => 'Nim Wajib diisi',
+            'nim.digits' => 'Nim Wajib :digits karakter',
+            'nim.numeric' => 'Nim Wajib Berupa Angka',
+            'prodi.required' => 'Prodi Wajib diisi',
+            'prodi.max' => 'Prodi Maksimal :max karakter',
+            'semester.required' => 'Semester Wajib diisi',
+            'semester.numeric' => 'Semester Wajib Angka',
+            'semester.min' => 'Semester Minimal :min',
+            'semester.max' => 'Semester Maksimal :max',
+            'kelas.required' => 'Kelas Wajib diisi',
+            'kelas.max' => 'Kelas Maksimal :max karakter',
+            'alamat.required' => 'Alamat Wajib diisi',
+            'alamat.max' => 'Alamat Maksimal :max karakter',
+        ]);
+      $mahasiswa->update ($validated);
+        return to_route('mahasiswa.index')->withSuccess('Data Berhasil Diupdate');
     }
 
     /**
