@@ -46,7 +46,11 @@
                    <td class="text-center">
         <div class="d-flex justify-content-center gap-2">
             <a href="{{ route('mahasiswa.edit', $mahasiswa) }}" class="btn btn-sm btn-warning">Edit</a>
-            <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+            <form action="{{ route('mahasiswa.destroy', $mahasiswa) }}" method="POST">
+              @method('DELETE')
+              @csrf
+              <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Anda yakin menghapus data ini?')">Hapus</button>
+            </form>
         </div>
     </td>
               </tr>

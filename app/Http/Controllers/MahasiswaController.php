@@ -114,6 +114,7 @@ class MahasiswaController extends Controller
      */
     public function destroy(Mahasiswa $mahasiswa)
     {
-        //
+         $mahasiswa->delete ($mahasiswa);
+        return to_route('mahasiswa.index')->withSuccess('Data Berhasil Dihapus');
     }
 }
